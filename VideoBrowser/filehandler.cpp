@@ -1,12 +1,24 @@
 #include "filehandler.h"
 
-FileHandler::FileHandler()
+FileHandler *FileHandler::instance = nullptr;
+
+FileHandler::FileHandler() :
+    database(Database::getInstance())
 {
 }
 
 void FileHandler::addFile(QString fileName)
 {
 
+}
+
+FileHandler *FileHandler::getInstance()
+{
+    if (instance == nullptr) {
+        instance = new FileHandler();
+    }
+
+    return instance;
 }
 
 QByteArray FileHandler::retrieveFile(QString fileName)
