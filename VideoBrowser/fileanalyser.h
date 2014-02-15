@@ -10,7 +10,7 @@ public:
     void store(int id, int time, QVariant blob);
 
 protected:
-    virtual void analyse(int id);
+    virtual void analyse(QByteArray data);
 
 private:
 
@@ -23,7 +23,7 @@ public:
     virtual ~FileAnalyser() override;
 
 protected:
-    virtual void analyse(int id) override;
+    virtual void analyse(QByteArray data) override;
 
 private:
 };

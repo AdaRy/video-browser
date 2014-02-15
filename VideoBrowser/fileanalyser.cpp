@@ -14,7 +14,7 @@ void FileAnalyserStub::store(int id, int time, QVariant blob)
 
 }
 
-void FileAnalyserStub::analyse(int id)
+void FileAnalyserStub::analyse(QByteArray data)
 {
 
 }
@@ -28,7 +28,7 @@ FileAnalyser::~FileAnalyser()
 
 }
 
-void FileAnalyser::analyse(int id)
+void FileAnalyser::analyse(QByteArray data)
 {
-    id = 2;
+
 }
