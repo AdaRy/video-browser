@@ -1,33 +1,40 @@
 #ifndef FILEANALYSER_H
 #define FILEANALYSER_H
 
+#include <QDebug>
 #include <QVariant>
 #include <QByteArray>
+
+#include <stdexcept>
+
+#include "database.h"
 
 class FileAnalyserStub
 {
 public:
-    FileAnalyserStub();
+    FileAnalyserStub() = delete;
+    FileAnalyserStub(const QByteArray &fileData, const int fileID);
     virtual ~FileAnalyserStub();
-    static FileAnalyserStub *getInstance();
-
-    void store(int id, int time, QVariant blob);
+    virtual void analyse();
 
 protected:
-    virtual void analyse(QByteArray data);
+    QByteArray fileData;
+    int fileID;
+
+    void store(int time, QVariant blob);
 
 private:
-    static FileAnalyserStub* instance;
 };
 
 class FileAnalyser : public FileAnalyserStub
 {
 public:
-    FileAnalyser();
+    FileAnalyser() = delete;
+    FileAnalyser(const QByteArray &fileData, const int fileID);
     virtual ~FileAnalyser() override;
+    virtual void analyse() override;
 
 protected:
-    virtual void analyse(QByteArray data) override;
 
 private:
 };

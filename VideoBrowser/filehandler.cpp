@@ -31,7 +31,7 @@ void FileHandler::analyseFile()
 {
     QByteArray fileData = this->retrieveFile();
 
-    FileAnalyserStub fileAnalyser(fileData);
+    FileAnalyserStub fileAnalyser(fileData, fileID);
     fileAnalyser.analyse();
 }
 
