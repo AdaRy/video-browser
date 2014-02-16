@@ -7,26 +7,29 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QVariant>
 
-#include <utility>
+#include <stdexcept>
 
 class Database
 {
 public:
-    Database();
-    ~Database();
     static Database *getInstance();
-
-    QSqlQuery &&query();
+    QSqlQuery queryExec(const QString &queryString = QString::null);
+    QVariant lastInsertId();
 
 protected:
 
 private:
+    Database();
+    ~Database();
+    Q_DISABLE_COPY(Database)
+
     static Database *instance;
     QSqlDatabase database;
 
-    bool connect();
-    void createDatabase();
+    void connect();
+    void createTables();
 };
 
 #endif // DATABASE_H
