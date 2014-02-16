@@ -3,28 +3,37 @@
 
 #include <QString>
 #include <QByteArray>
+#include <QFileInfo>
+#include <QFile>
+
+#include <MediaInfo/MediaInfo.h>
+#include <stdexcept>
 
 #include "database.h"
+#include "fileanalyser.h"
 
 class FileHandler
 {
 public:
-    FileHandler();
-    static FileHandler *getInstance();
+    FileHandler() = delete;
+    FileHandler(const QString &filePath);
 
-    void addFile(QString fileName);
-    QByteArray retrieveFile(QString fileName);
-    void getPreview(QString fileName);
-    void search();
-
+    void processFile();
+    QByteArray getPreview(const int fileID);
 
 protected:
 
 private:
-    static FileHandler *instance;
     Database *database;
-    void analyseFile(QString fileName);
-    void insertIntoDatabase(QString fileName);
+    int fileID;
+    QString filePath;
+    MediaInfoLib::MediaInfo mediaInfoHandle;
+
+    void analyseFile();
+    QByteArray retrieveFile();
+    void createMediaInfoHandle();
+    void insertIntoDatabase();
+    void writeMetadataToDb();
 };
 
 #endif // FILEHANDLER_H

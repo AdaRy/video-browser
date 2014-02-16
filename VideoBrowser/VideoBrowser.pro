@@ -27,3 +27,7 @@ HEADERS += \
 CONFIG += c++11
 
 QT += sql
+
+LIBS += -lmediainfo
+
+DEFINES += _UNICODE
