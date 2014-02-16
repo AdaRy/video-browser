@@ -15,6 +15,7 @@ class Database
 {
 public:
     static Database *getInstance();
+    QSqlQuery getQuery();
     QSqlQuery queryExec(const QString &queryString = QString::null);
     QVariant lastInsertId();
 

@@ -23,13 +23,19 @@ Database *Database::getInstance()
     return instance;
 }
 
-QSqlQuery Database::queryExec(const QString &queryString)
+QSqlQuery Database::getQuery()
 {
     if (! database.isOpen() || ! database.isValid()) {
         this->connect();
     }
 
     QSqlQuery query(database);
+    return query;
+}
+
+QSqlQuery Database::queryExec(const QString &queryString)
+{
+    QSqlQuery query = this->getQuery();
     query.prepare(queryString);
     if (! query.exec()) {
         throw std::runtime_error(query.lastError().text().toStdString());
