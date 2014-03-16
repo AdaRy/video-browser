@@ -19,9 +19,6 @@ public:
     FileHandler(const QString &filePath);
 
     void processFile();
-    QByteArray getPreview(const int fileID);
-
-protected:
 
 private:
     Database *database;

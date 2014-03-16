@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     filehandler.cpp \
     fileanalyser.cpp \
     database.cpp \
-    videohandler.cpp
+    videohandler.cpp \
+    video.cpp
 
 # Installation path
 # target.path =
@@ -24,7 +25,8 @@ HEADERS += \
     filehandler.h \
     fileanalyser.h \
     database.h \
-    videohandler.h
+    videohandler.h \
+    video.h
 
 CONFIG += c++11
 

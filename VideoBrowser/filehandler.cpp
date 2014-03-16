@@ -22,12 +22,6 @@ void FileHandler::processFile()
     this->analyseFile();
 }
 
-QByteArray FileHandler::getPreview(const int fileID)
-{
-    Q_UNUSED(fileID)
-    return QByteArray();
-}
-
 void FileHandler::analyseFile()
 {
     QByteArray fileData = this->retrieveFile();
