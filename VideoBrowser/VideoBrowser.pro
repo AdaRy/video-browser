@@ -10,7 +10,8 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp \
     filehandler.cpp \
     fileanalyser.cpp \
-    database.cpp
+    database.cpp \
+    videohandler.cpp
 
 # Installation path
 # target.path =
@@ -22,7 +23,8 @@ qtcAddDeployment()
 HEADERS += \
     filehandler.h \
     fileanalyser.h \
-    database.h
+    database.h \
+    videohandler.h
 
 CONFIG += c++11
 
@@ -31,3 +33,5 @@ QT += sql
 LIBS += -lmediainfo
 
 DEFINES += _UNICODE
+
+QMAKE_CXXFLAGS += -Wall -Wextra -Werror

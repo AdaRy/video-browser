@@ -24,7 +24,8 @@ void FileHandler::processFile()
 
 QByteArray FileHandler::getPreview(const int fileID)
 {
-
+    Q_UNUSED(fileID)
+    return QByteArray();
 }
 
 void FileHandler::analyseFile()
