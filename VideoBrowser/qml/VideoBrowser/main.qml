@@ -1,16 +1,47 @@
 import QtQuick 2.0
 
 Rectangle {
-    width: 360
-    height: 360
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-    }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
+    id: mainRect
+    width: 500
+    height: 500
+    color: "black"
+
+    property string nextView : (viewLoader.item == null) ? "" : viewLoader.item.nextView;
+
+    VideoView
+    {
+        id:videoView
+        visible: false;
+
+        onStoreButtonClicked:
+        {
+            storeView.visible = true;
+            videoView.visible = false;
         }
     }
+
+    StoreView
+    {
+        id:storeView
+        onBackButtonClicked:
+        {
+            storeView.visible = false;
+            videoView.visible = true;
+        }
+
+        onButtonPlay:
+        {
+            storeView.visible = false;
+            videoView.visible = true;
+            videoView.changeAndPlay(video)
+        }
+    }
+
+    Component.onCompleted:
+    {
+        storeView.visible = false;
+        videoView.visible = true;
+    }
+
+
 }
